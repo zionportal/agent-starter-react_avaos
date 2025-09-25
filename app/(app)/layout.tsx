@@ -1,4 +1,4 @@
-import { getAppConfig } from '@/lib/utils';
+import { getAppConfig } from '@/lib/server-utils';
 
 interface AppLayoutProps {
   children: React.ReactNode;

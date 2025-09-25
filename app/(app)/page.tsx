@@ -1,5 +1,5 @@
 import { App } from '@/components/app';
-import { getAppConfig } from '@/lib/utils';
+import { getAppConfig } from '@/lib/server-utils';
 
 export default async function Page() {
   const appConfig = await getAppConfig();

@@ -6,7 +6,7 @@ import { existsSync } from 'node:fs';
 import { readFile } from 'node:fs/promises';
 import { join } from 'node:path';
 import { APP_CONFIG_DEFAULTS } from '@/app-config';
-import { getAppConfig } from '@/lib/utils';
+import { getAppConfig } from '@/lib/server-utils';
 
 type Dimensions = {
   width: number;

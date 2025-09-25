@@ -1,7 +1,7 @@
 import * as React from 'react';
 import { Tabs } from '@/app/components/Tabs';
 import { Provider } from '@/components/provider';
-import { cn, getAppConfig } from '@/lib/utils';
+import { getAppConfig } from '@/lib/server-utils';
 
 export default async function ComponentsLayout({ children }: { children: React.ReactNode }) {
   const appConfig = await getAppConfig();
