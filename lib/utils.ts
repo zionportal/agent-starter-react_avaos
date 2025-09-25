@@ -33,9 +33,7 @@ export function transcriptionToChatMessage(
   };
 }
 
-// https://react.dev/reference/react/cache#caveats
-// > React will invalidate the cache for all memoized functions for each server request.
-export const getAppConfig = cache(async (headers: Headers): Promise<AppConfig> => {
+export const getAppConfig = async (headers: Headers): Promise<AppConfig> => {
   if (CONFIG_ENDPOINT) {
     const sandboxId = SANDBOX_ID ?? headers.get('x-sandbox-id') ?? '';
 
@@ -74,4 +72,4 @@ export const getAppConfig = cache(async (headers: Headers): Promise<AppConfig> =
   }
 
   return APP_CONFIG_DEFAULTS;
-});
+};
