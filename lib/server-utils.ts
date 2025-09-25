@@ -1,28 +1,9 @@
 import { headers } from 'next/headers';
-import type { ReceivedChatMessage, TextStreamData } from '@livekit/components-react';
-import { Room } from 'livekit-client';
 import { APP_CONFIG_DEFAULTS } from '@/app-config';
 import type { AppConfig, SandboxConfig } from './types';
 
 export const CONFIG_ENDPOINT = process.env.NEXT_PUBLIC_APP_CONFIG_ENDPOINT;
 export const SANDBOX_ID = process.env.SANDBOX_ID;
-
-export function transcriptionToChatMessage(
-  textStream: TextStreamData,
-  room: Room
-): ReceivedChatMessage {
-  return {
-    id: textStream.streamInfo.id,
-    timestamp: textStream.streamInfo.timestamp,
-    message: textStream.text,
-    from:
-      textStream.participantInfo.identity === room.localParticipant.identity
-        ? room.localParticipant
-        : Array.from(room.remoteParticipants.values()).find(
-            (p) => p.identity === textStream.participantInfo.identity
-          ),
-  };
-}
 
 export const getAppConfig = async (): Promise<AppConfig> => {
   if (CONFIG_ENDPOINT) {
