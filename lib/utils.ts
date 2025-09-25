@@ -1,4 +1,5 @@
 import { cache } from 'react';
+import { headers } from 'next/headers';
 import { type ClassValue, clsx } from 'clsx';
 import { Room } from 'livekit-client';
 import { twMerge } from 'tailwind-merge';
@@ -33,9 +34,10 @@ export function transcriptionToChatMessage(
   };
 }
 
-export const getAppConfig = async (headers: Headers): Promise<AppConfig> => {
+export const getAppConfig = async (): Promise<AppConfig> => {
   if (CONFIG_ENDPOINT) {
-    const sandboxId = SANDBOX_ID ?? headers.get('x-sandbox-id') ?? '';
+    const hdrs = await headers();
+    const sandboxId = SANDBOX_ID ?? hdrs.get('x-sandbox-id') ?? '';
 
     try {
       if (!sandboxId) {
